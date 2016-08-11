@@ -1,0 +1,188 @@
+<!doctype html>
+<title>Parallel Coordinates</title>
+<link rel="stylesheet" type="text/css" href="d3.parcoords.css">
+<script src="examples/lib/d3.min.js"></script>
+<script src="examples/lib/sylvester.js"></script>
+<script src="examples/lib/slickgrid/jquery-1.7.min.js"></script>
+<script src="examples/lib/underscore.js"></script>
+<script src="examples/lib/underscore.math.js"></script>
+<script src="d3.parcoords.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script id="coloring-basic">var colors = d3.scale.category20b(); 
+
+// create a chart in every element with class "parcoords-coloring"
+d3.selectAll(".parcoords-coloring")
+  .each(function(d,i) {
+    var color = colors(i);
+
+    var chart = d3.parcoords()(this)
+      .data(data3.slice(7*i,7*i+30))
+      .alpha(0.6)
+      .color(color)
+      .margin({
+        top: 0,
+        left: 0,
+        bottom: 24,
+        right: 0
+      })
+      .render();
+
+    // color labels
+    var text = chart.svg.append("text")
+      .attr("x", 162)
+      .attr("y", 64)
+      .style({
+        "text-anchor": "end",
+        "font-weight": "bold",
+        "font-size": "11px",
+        "fill": "#ddd"
+      })
+      .text(colors(i))
+
+    // hover effect
+    d3.select(this).on({
+      "mouseover": function() { text.style("fill", "#222"); },
+      "mouseout": function() { text.style("fill", "#ddd"); }
+    })
+  });
+</script>
+
+
+
+<h1>Metal</h1>
+<div id="example-metal" class="parcoords" style="width:1300px;margin-left:-250px;height:270px;"></div>
+
+<h1>Electro</h1>
+<div id="example-electro" class="parcoords" style="width:1300px;margin-left:-250px;height:270px;"></div>
+
+<h1>Classical</h1>
+<div id="example-classical" class="parcoords" style="width:1300px;margin-left:-250px;height:270px;"></div>
+
+<script id="progressive">// load csv file and create the chart
+d3.csv('examples/data/metal.csv', function(data) {
+  var colorgen = d3.scale.ordinal()
+    .range(["green","purple", "black"]);
+
+  var color = function(d) { return colors(d.genres); };
+
+  var parcoords = d3.parcoords()("#example-metal")
+    .data(data)
+    .hideAxis(["name"])
+    .color(color)
+    .alpha(0.25)
+    .composite("darken")
+    .margin({ top: 24, left: 150, bottom: 12, right: 0 })
+    .mode("queue")
+    .render()
+    .brushMode("1D-axes");  // enable brushing
+
+  parcoords.svg.selectAll("text")
+    .style("font", "10px sans-serif");
+});
+</script>
+
+<script id="electro">// load csv file and create the chart
+d3.csv('examples/data/electro.csv', function(data) {
+  var colorgen = d3.scale.ordinal()
+    .range(["green","purple", "black"]);
+
+  var color = function(d) { return colors(d.genres); };
+
+
+
+  var parcoords = d3.parcoords()("#example-electro")
+    .data(data)
+    .hideAxis(["name"])
+    .color(color)
+    .alpha(0.25)
+    .composite("darken")
+    .margin({ top: 24, left: 150, bottom: 12, right: 0 })
+    .mode("queue")
+    .render()
+    .brushMode("1D-axes");  // enable brushing
+
+  parcoords.svg.selectAll("text")
+    .style("font", "10px sans-serif");
+});
+</script>
+
+<script id="classical">// load csv file and create the chart
+d3.csv('examples/data/classical.csv', function(data) {
+  var colorgen = d3.scale.ordinal()
+    .range(["green","purple", "black"]);
+
+  var color = function(d) { return colors(d.genres); };
+
+  var parcoords = d3.parcoords()("#example-classical")
+    .data(data)
+    .hideAxis(["name"])
+    .color(color)
+    .alpha(0.25)
+    .composite("darken")
+    .margin({ top: 24, left: 150, bottom: 12, right: 0 })
+    .mode("queue")
+    .render()
+    .brushMode("1D-axes");  // enable brushing
+
+  parcoords.svg.selectAll("text")
+    .style("font", "10px sans-serif");
+});
+</script>
+
+
+<h1>Indie</h1>
+<div id="example-indie" class="parcoords" style="width:1300px;margin-left:-250px;height:270px;"></div>
+
+
+<script id="indie">// load csv file and create the chart
+d3.csv('examples/data/indie.csv', function(data) {
+  var colorgen = d3.scale.ordinal()
+    .range(["green","purple", "black"]);
+
+  var color = function(d) { return colors(d.genres); };
+
+  var parcoords = d3.parcoords()("#example-indie")
+    .data(data)
+    .hideAxis(["name"])
+    .color(color)
+    .alpha(0.25)
+    .composite("darken")
+    .margin({ top: 24, left: 150, bottom: 12, right: 0 })
+    .mode("queue")
+    .render()
+    .brushMode("1D-axes");  // enable brushing
+
+  parcoords.svg.selectAll("text")
+    .style("font", "10px sans-serif");
+});
+</script>
+
+<h1>Pop</h1>
+<div id="example-pop" class="parcoords" style="width:1300px;margin-left:-250px;height:700px;"></div>
+
+
+<script id="pop">// load csv file and create the chart
+d3.csv('examples/data/pop.csv', function(data) {
+  var colorgen = d3.scale.ordinal()
+    .range(["green","purple", "black"]);
+
+  var color = function(d) { return colors(d.genres); };
+
+  var parcoords = d3.parcoords()("#example-pop")
+    .data(data)
+    .hideAxis(["name"])
+    .color(color)
+    .alpha(0.25)
+    .composite("darken")
+    .margin({ top: 24, left: 150, bottom: 12, right: 0 })
+    .mode("queue")
+    .render()
+    .brushMode("1D-axes");  // enable brushing
+
+  parcoords.svg.selectAll("text")
+    .style("font", "10px sans-serif");
+});
+</script>
+
+
