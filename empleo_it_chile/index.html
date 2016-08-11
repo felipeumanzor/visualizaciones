@@ -7,6 +7,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
 <script src="d3pie.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 </head>
 
 <style type="text/css">
@@ -23,6 +24,7 @@
 	}
 </style>
 <body>
+	<br>
 <div class="container">
 <h1 style="margin-bottom:50px;"> ¿Qué Busca la Industria del Software ( IT ) en Chile?</h1>
 <p style="font-size:25px; font-weight:150;">A continuación se muestra un gráfico con las diferentes competencias que buscan las empresas tecnológicas del País, los datos fueron extraídos de <a href="https://www.getonbrd.cl">Get On Board</a> el día 10 de Agosto de 2016. Esta plataforma de búsqueda de empleo reune a las empresas chilenas líderes en tecnología.</p>
@@ -91,7 +93,12 @@ d3.csv("categorias.csv", function(error, data){
 
 <div id="areas"></div>
 
+<div id="author-info">
+	<h3>Visualizaciones creadas por Felipe Alejandro Pérez Umanzor 	<a href="https://www.facebook.com/felipe.perez.umanzor"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+	<a href="https://twitter.com/felipeumanzor_"><i class="fa fa-twitter" aria-hidden="true"></i></a></h3>
+	<p>umanzor.felipe@gmail.com</p>
 
+</div>
 <script>
 var pie = new d3pie("pieChart", {
 
