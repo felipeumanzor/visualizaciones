@@ -193,7 +193,7 @@ class Explode{
 //      fill("gray")
 //			text(this.intensity/5, this.x +Math.pow(realint/2,realint/2) , this.y);
       
-      fill(this.intensity*2,255,255,this.intensity-this.size)
+      fill(this.intensity*2,255,255,this.intensity*2-this.size)
       let realsize = sqrt(pow(10,realint))
       let magmax = sqrt(pow(10,10))
       let d = map(realsize,0,magmax,0,2000)
