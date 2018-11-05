@@ -190,8 +190,8 @@ class Explode{
     if(this.size<this.intensity){
         		let realint = this.intensity/5;
 
-      fill("gray")
-			text(this.intensity/5, this.x +Math.pow(realint/2,realint/2) , this.y);
+//      fill("gray")
+//			text(this.intensity/5, this.x +Math.pow(realint/2,realint/2) , this.y);
       
       fill(this.intensity*2,255,255,this.intensity-this.size)
       let realsize = sqrt(pow(10,realint))
